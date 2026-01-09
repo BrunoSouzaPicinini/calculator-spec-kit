@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Test File Protocol</title>
+</head>
+<body>
+    <h1>Testing Module Loading</h1>
+    <p>If you see this, the HTML loaded.</p>
+    <p>Check the browser console for any CORS/module errors.</p>
+    <script type="module">
+        console.log("Attempting to load module...");
+        import { initialState } from "./calculator-site/calculator.js";
+        console.log("Module loaded successfully!");
+    </script>
+</body>
+</html>
