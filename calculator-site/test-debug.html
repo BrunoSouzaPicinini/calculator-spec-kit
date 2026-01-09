@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug Calculator</title>
+</head>
+<body>
+  <h1>Calculator Debug Test</h1>
+  <div id="result"></div>
+  <script type="module">
+    import { inputNumber, inputOperator, calculate } from './calculator.js';
+    
+    const resultDiv = document.getElementById('result');
+    
+    // Test: 2 ^ 3 = 8
+    let state = {
+      displayValue: "0",
+      previousOperand: null,
+      operator: null,
+      waitingForOperand: false,
+      calculationComplete: false,
+      isError: false,
+    };
+    
+    // Input 2
+    state = inputNumber(state, 2);
+    resultDiv.innerHTML += `<p>After 2: displayValue = ${state.displayValue}</p>`;
+    
+    // Input ^
+    state = inputOperator(state, "^");
+    resultDiv.innerHTML += `<p>After ^: displayValue = ${state.displayValue}, operator = ${state.operator}</p>`;
+    
+    // Input 3
+    state = inputNumber(state, 3);
+    resultDiv.innerHTML += `<p>After 3: displayValue = ${state.displayValue}</p>`;
+    
+    // Calculate
+    state = calculate(state);
+    resultDiv.innerHTML += `<p><strong>After =: displayValue = ${state.displayValue}</strong></p>`;
+    resultDiv.innerHTML += `<p>Expected: 8</p>`;
+    resultDiv.innerHTML += `<p>Test: ${state.displayValue === '8' ? '✅ PASS' : '❌ FAIL'}</p>`;
+  </script>
+</body>
+</html>
