@@ -1,173 +1,88 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla Calculator</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
 
-  <body>
-    <main class="calculator" role="application" aria-label="Calculator">
-      <section class="display" aria-live="polite" aria-atomic="true">
-        <div class="display-value" id="display">0</div>
-      </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanilla Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-      <section class="buttons" aria-label="Calculator controls">
-        <button
-          class="button function"
-          data-action="clearAll"
-          aria-label="Clear all"
-          aria-keyshortcuts="Delete"
-        >
-          AC
-        </button>
-        <button
-          class="button function"
-          data-action="clear"
-          aria-label="Clear"
-          aria-keyshortcuts="Escape"
-        >
-          C
-        </button>
-        <button
-          class="button operator"
-          data-value="÷"
-          aria-label="Divide"
-          aria-keyshortcuts="/"
-        >
-          ÷
-        </button>
-        <button
-          class="button operator"
-          data-value="×"
-          aria-label="Multiply"
-          aria-keyshortcuts="* x"
-        >
-          ×
-        </button>
+<body>
+  <main class="calculator" role="application" aria-label="Calculator">
+    <section class="display" aria-live="polite" aria-atomic="true">
+      <div class="display-value" id="display">0</div>
+    </section>
 
-        <button
-          class="button number"
-          data-value="7"
-          aria-label="7"
-          aria-keyshortcuts="7"
-        >
-          7
-        </button>
-        <button
-          class="button number"
-          data-value="8"
-          aria-label="8"
-          aria-keyshortcuts="8"
-        >
-          8
-        </button>
-        <button
-          class="button number"
-          data-value="9"
-          aria-label="9"
-          aria-keyshortcuts="9"
-        >
-          9
-        </button>
-        <button
-          class="button operator"
-          data-value="-"
-          aria-label="Subtract"
-          aria-keyshortcuts="-"
-        >
-          -
-        </button>
+    <section class="buttons" aria-label="Calculator controls">
+      <button class="button function" data-action="clearAll" aria-label="Clear all" aria-keyshortcuts="Delete">
+        AC
+      </button>
+      <button class="button function" data-action="clear" aria-label="Clear" aria-keyshortcuts="Escape">
+        C
+      </button>
+      <button class="button operator" data-value="÷" aria-label="Divide" aria-keyshortcuts="/">
+        ÷
+      </button>
+      <button class="button operator" data-value="×" aria-label="Multiply" aria-keyshortcuts="* x">
+        ×
+      </button>
+      <button class="button operator" data-value="^" aria-label="Exponentiate" aria-keyshortcuts="^">
+        ^
+      </button>
 
-        <button
-          class="button number"
-          data-value="4"
-          aria-label="4"
-          aria-keyshortcuts="4"
-        >
-          4
-        </button>
-        <button
-          class="button number"
-          data-value="5"
-          aria-label="5"
-          aria-keyshortcuts="5"
-        >
-          5
-        </button>
-        <button
-          class="button number"
-          data-value="6"
-          aria-label="6"
-          aria-keyshortcuts="6"
-        >
-          6
-        </button>
-        <button
-          class="button operator"
-          data-value="+"
-          aria-label="Add"
-          aria-keyshortcuts="+"
-        >
-          +
-        </button>
+      <button class="button number" data-value="7" aria-label="7" aria-keyshortcuts="7">
+        7
+      </button>
+      <button class="button number" data-value="8" aria-label="8" aria-keyshortcuts="8">
+        8
+      </button>
+      <button class="button number" data-value="9" aria-label="9" aria-keyshortcuts="9">
+        9
+      </button>
+      <button class="button operator" data-value="-" aria-label="Subtract" aria-keyshortcuts="-">
+        -
+      </button>
 
-        <button
-          class="button number"
-          data-value="1"
-          aria-label="1"
-          aria-keyshortcuts="1"
-        >
-          1
-        </button>
-        <button
-          class="button number"
-          data-value="2"
-          aria-label="2"
-          aria-keyshortcuts="2"
-        >
-          2
-        </button>
-        <button
-          class="button number"
-          data-value="3"
-          aria-label="3"
-          aria-keyshortcuts="3"
-        >
-          3
-        </button>
-        <button
-          class="button equals"
-          data-action="equals"
-          aria-label="Equals"
-          aria-keyshortcuts="Enter ="
-          style="grid-row: span 2"
-        >
-          =
-        </button>
+      <button class="button number" data-value="4" aria-label="4" aria-keyshortcuts="4">
+        4
+      </button>
+      <button class="button number" data-value="5" aria-label="5" aria-keyshortcuts="5">
+        5
+      </button>
+      <button class="button number" data-value="6" aria-label="6" aria-keyshortcuts="6">
+        6
+      </button>
+      <button class="button operator" data-value="+" aria-label="Add" aria-keyshortcuts="+">
+        +
+      </button>
 
-        <button
-          class="button number zero"
-          data-value="0"
-          aria-label="0"
-          aria-keyshortcuts="0"
-          style="grid-column: span 2"
-        >
-          0
-        </button>
-        <button
-          class="button decimal"
-          data-action="decimal"
-          aria-label="Decimal point"
-          aria-keyshortcuts="."
-        >
-          .
-        </button>
-      </section>
-    </main>
+      <button class="button number" data-value="1" aria-label="1" aria-keyshortcuts="1">
+        1
+      </button>
+      <button class="button number" data-value="2" aria-label="2" aria-keyshortcuts="2">
+        2
+      </button>
+      <button class="button number" data-value="3" aria-label="3" aria-keyshortcuts="3">
+        3
+      </button>
+      <button class="button equals" data-action="equals" aria-label="Equals" aria-keyshortcuts="Enter ="
+        style="grid-row: span 2">
+        =
+      </button>
 
-    <script type="module" src="calculator.js"></script>
-    <script type="module" src="ui.js"></script>
-  </body>
+      <button class="button number zero" data-value="0" aria-label="0" aria-keyshortcuts="0"
+        style="grid-column: span 2">
+        0
+      </button>
+      <button class="button decimal" data-action="decimal" aria-label="Decimal point" aria-keyshortcuts=".">
+        .
+      </button>
+    </section>
+  </main>
+
+  <script type="module" src="calculator.js"></script>
+  <script type="module" src="ui.js"></script>
+</body>
+
 </html>

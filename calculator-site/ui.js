@@ -43,6 +43,10 @@ export function mapKeyToAction(key, modifiers = {}) {
     return { action: "operator", value: "÷" };
   }
 
+  if (key === "^") {
+    return { action: "operator", value: "^" };
+  }
+
   if (key === "Enter" || key === "=") {
     return { action: "equals" };
   }

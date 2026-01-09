@@ -15,7 +15,10 @@ You can also open `calculator-site/index.html` directly in a browser.
 ## Buttons and actions
 
 - Numbers: `0-9` — append digits to the current entry
-- Operators: `+`, `-`, `×`, `÷` — set the pending operation (chained ops supported)
+- Operators: `+`, `-`, `×`, `÷`, `^` — set the pending operation (chained ops supported)
+  - `+` and `-` — add or subtract
+  - `×` and `÷` — multiply or divide
+  - `^` — raise to the power of (exponentiation, e.g., 2^3 = 8, 2^0.5 ≈ 1.41)
 - Decimal: `.` — add a decimal point (blocks duplicates)
 - Equals: `=` — calculate the result
 - Clear: `C` — reset current entry, keep pending operator/operand
@@ -24,7 +27,7 @@ You can also open `calculator-site/index.html` directly in a browser.
 ## Keyboard shortcuts
 
 - Digits: `0-9`
-- Operators: `+`, `-`, `*`/`x` → multiply, `/` → divide
+- Operators: `+`, `-`, `*`/`x` → multiply, `/` → divide, `^` → exponentiate
 - Decimal: `.`
 - Equals: `Enter` or `=`
 - Clear entry: `Escape`

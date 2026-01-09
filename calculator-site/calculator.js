@@ -63,6 +63,17 @@ export function inputOperator(state, operator) {
   };
 }
 
+export function exponentiate(base, exponent) {
+  /**
+   * Calculate base raised to the power of exponent.
+   * Uses JavaScript's native Math.pow() which handles:
+   * - 0^0 = 1 (JavaScript convention)
+   * - Overflow = Infinity
+   * - Complex numbers (negative base + non-integer exponent) = NaN
+   */
+  return Math.pow(base, exponent);
+}
+
 export function calculate(state) {
   if (state.isError) return state;
   if (state.previousOperand === null || state.operator === null) return state;
@@ -91,6 +102,9 @@ export function calculate(state) {
       } else {
         result = a / b;
       }
+      break;
+    case "^":
+      result = exponentiate(a, b);
       break;
     default:
       return state;
@@ -124,8 +138,21 @@ export function clearAll() {
 }
 
 function formatResult(value) {
-  if (typeof value !== "number" || Number.isNaN(value)) return "Error";
-  const rounded = Math.round(value * 1e10) / 1e10;
+  if (typeof value !== "number" || Number.isNaN(value)) {
+    return "Invalid operation";
+  }
+  if (!Number.isFinite(value)) {
+    return "Result too large";
+  }
+
+  // For very small numbers, use scientific notation BEFORE rounding
+  if (Math.abs(value) < 0.00001 && value !== 0) {
+    return value.toExponential(4);
+  }
+
+  // Format to 8 decimal places
+  const rounded = Math.round(value * 1e8) / 1e8;
+
   const asString = String(rounded);
   if (asString.replace(".", "").length > 12) {
     return rounded.toExponential(6);
