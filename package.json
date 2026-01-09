@@ -1,0 +1,33 @@
+{
+  "name": "calculator-site",
+  "version": "1.0.0",
+  "description": "Vanilla JavaScript calculator",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config=config/jest.config.js",
+    "test:watch": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --watch --config=config/jest.config.js",
+    "test:unit": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config=config/jest.config.js tests/unit",
+    "test:integration": "playwright test",
+    "test:coverage": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage --config=config/jest.config.js",
+    "lint": "eslint --config config/.eslintrc.json \"calculator-site/**/*.js\" \"tests/**/*.js\"",
+    "lint:fix": "eslint --config config/.eslintrc.json --fix \"calculator-site/**/*.js\" \"tests/**/*.js\"",
+    "format": "prettier --write \"**/*.{js,css,html,json,md}\"",
+    "serve": "http-server calculator-site -p 8080",
+    "lighthouse": "npm run serve -- --silent & sleep 3 && lighthouse http://localhost:8080 --output html --output-path ./lighthouse-report.html --chrome-flags=\"--headless\""
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@testing-library/jest-dom": "^6.1.5",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "http-server": "^14.1.1",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "lighthouse": "^11.4.0",
+    "prettier": "^3.1.1"
+  }
+}
