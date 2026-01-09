@@ -132,13 +132,15 @@ Time:        ~0.6 seconds
 - 14 edge case tests
 - 6 existing keyboard tests
 
-### Integration Tests: 7 tests written (Playwright)
-Tests written and ready for browser execution:
-- Button clicks (2^3, 4^0.5)
-- Keyboard input (^ key)
-- Overflow display
-- Complex number errors
-- Operation chaining
+### Integration Tests: 12/12 PASSING ✅
+Tests executed with Playwright (end-to-end UI tests):
+- 5 basic arithmetic tests (existing)
+- 7 exponentiation tests (new)
+  - Button clicks: 2^3=8, 4^0.5=2
+  - Keyboard input: ^ key support
+  - Display handling: Overflow, invalid operations, edge cases
+  - Operation chaining: Left-to-right evaluation (state machine behavior)
+- **All tests passing** (12/12)
 
 ### Code Quality
 - **ESLint**: ✅ 0 issues
@@ -242,6 +244,11 @@ Tests written and ready for browser execution:
 3. **Floating Point Precision**: Up to 8 decimal places, IEEE 754 compliant
 4. **Overflow**: Results > Number.MAX_VALUE display as "Result too large"
 5. **Scientific Notation**: Used for results < 0.00001 (e.g., 1e-10)
+6. **Operator Precedence**: State machine calculator evaluates left-to-right, NOT by mathematical precedence
+   - Example: `5 + 2^3` evaluates as `(5 + 2)^3 = 343`, not `5 + (2^3) = 13`
+   - This is a fundamental limitation of the simple state machine architecture
+   - Users should use parentheses or calculate intermediate results for complex expressions
+   - A future enhancement would require implementing an expression parser with precedence rules
 
 ## Future Enhancements
 

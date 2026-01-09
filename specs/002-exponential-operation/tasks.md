@@ -255,10 +255,11 @@ Phase 4: Polish & Cross-Cutting Concerns
 
 ### Deployment & Review
 
-- [ ] T029 Git commit all changes
-  - Commit message: `feat: add exponential operation (^) to calculator`
-  - Include: T004-T028 work
-  - Reference: CDTFGT-11 in commit message
+- [x] T029 Git commit all changes
+  - Commit message: `feat: add exponential operation (^) to calculator` ✓
+  - Include: T004-T028 work ✓
+  - Reference: CDTFGT-11 in commit message ✓
+  - Commit hash: 9b31ae4
 
 - [ ] T030 Code review checklist (final)
   - All 64 tests pass ✓
